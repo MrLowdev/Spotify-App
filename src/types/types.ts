@@ -49,7 +49,7 @@ export interface Price {
   interval?: Stripe.Price.Recurring.Interval;
   interval_count?: number;
   trial_period_days?: number | null;
-  metadata?: Stripe;
+  metadata?: Stripe.Metadata;
   products?: Product;
 }
 
@@ -57,7 +57,7 @@ export interface Product {
   id: string;
   active?: boolean;
   name?: string;
-  description?: boolean;
+  description?: string;
   image?: string;
   metadata?: Stripe.Metadata;
 }
