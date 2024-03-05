@@ -1,6 +1,7 @@
 "use client";
 
 import AuthModal from "@/components/modal/AuthModal";
+import UploadModal from "@/components/modal/UploadModal";
 import { ProductWithPrice } from "@/types/types";
 import { Fragment, useEffect, useState } from "react";
 
@@ -20,6 +21,7 @@ const ModalProvider: React.FC<ModalProviderProps> = ({ products }) => {
   return (
     <>
       <AuthModal />
+      <UploadModal />
     </>
   );
 };
