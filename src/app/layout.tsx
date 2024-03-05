@@ -6,6 +6,8 @@ import SupabaseProvider from "@/providers/SupabaseProvider";
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
 import getActiveProductsWithPrices from "@/actions/getActiveProductsWithPrices";
+import Sidebar from "@/components/sidebar/Sidebar";
+import getSongsByUserId from "@/actions/getSongsByUserId";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -22,6 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const products = await getActiveProductsWithPrices();
+  const userSongs = await getSongsByUserId();
   return (
     <html lang="en">
       <body className={font.className}>
@@ -29,7 +32,7 @@ export default async function RootLayout({
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider products={products} />
-            {children}
+            <Sidebar songs={userSongs}> {children}</Sidebar>
           </UserProvider>
         </SupabaseProvider>
       </body>
