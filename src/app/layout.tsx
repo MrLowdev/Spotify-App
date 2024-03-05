@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
+import ToastProvider from "@/providers/ToastProvider";
+import SupabaseProvider from "@/providers/SupabaseProvider";
+import UserProvider from "@/providers/UserProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Spotify-clone",
   description: "This is a musing streaming platform",
 };
+
+export const revalidate = 0;
 
 export default function RootLayout({
   children,
@@ -16,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <ToastProvider />
+        <SupabaseProvider>
+          <UserProvider>{children}</UserProvider>
+        </SupabaseProvider>
+      </body>
     </html>
   );
 }
