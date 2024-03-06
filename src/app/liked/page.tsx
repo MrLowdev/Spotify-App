@@ -3,8 +3,6 @@ import LikedContent from "@/components/LikedContent";
 import Header from "@/components/home/Header";
 import Image from "next/image";
 
-export const relative = 0;
-
 const LikedPage = async () => {
   const songs = await getLikedSongs();
   return (
