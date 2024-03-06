@@ -8,6 +8,7 @@ import ModalProvider from "@/providers/ModalProvider";
 import getActiveProductsWithPrices from "@/actions/getActiveProductsWithPrices";
 import Sidebar from "@/components/sidebar/Sidebar";
 import getSongsByUserId from "@/actions/getSongsByUserId";
+import Player from "@/components/home/Player";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <UserProvider>
             <ModalProvider products={products} />
             <Sidebar songs={userSongs}> {children}</Sidebar>
+            <Player />
           </UserProvider>
         </SupabaseProvider>
       </body>
